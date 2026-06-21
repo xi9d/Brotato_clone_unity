@@ -34,11 +34,7 @@ public class Player : MonoBehaviour
     private void Update()
     {
 
-        // for testing
-        if(Input.GetKey(KeyCode.Space))
-        {
-            Hit(10);
-        }
+      
         if(dead)
         {
             movement = Vector2.zero;
@@ -70,7 +66,12 @@ public class Player : MonoBehaviour
     }
     public void OnCollisionEnter2D(Collision2D collision)
     {
-        
+        Enemy enemy = collision.gameObject.GetComponent<Enemy>();
+
+        if(enemy != null)
+        {
+            Hit(20);
+        }
     }
     public void Hit(int damage)
     {
